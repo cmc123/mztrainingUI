@@ -1,0 +1,27 @@
+
+    <ons-page ng-controller="loginCtrl">
+       <ons-toolbar>
+        <div class="center" >登录</div>
+        </ons-toolbar>
+        <form >
+        <ons-list>
+            <ons-list-item>
+                <p>
+                <input type="text"  ng-model="username" placeholder="username"  class="text-input text-input&#45;&#45;transparent" style="margin-top: 8px;
+                width:100%;">{{errorMsg}}
+                </p>
+            </ons-list-item>
+            <ons-list-item>
+                <p>
+                <input type="password"  ng-model="password" placeholder="password"  class="text-input text-input&#45;&#45;transparent" style="margin-top: 8px;
+                width:100%;">
+                </p>
+
+            </ons-list-item>
+        </ons-list>
+        <div class="content-padded">
+            <ons-button modifier="large" ng-click="submitLoginForm()">Sign in</ons-button>
+        </div>
+        </form>
+    </ons-page>
+

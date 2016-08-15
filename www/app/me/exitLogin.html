@@ -1,0 +1,28 @@
+<ons-dialog ng-controller="MeCtrl" style="height: 160px;" var="naviDialog" cancelable>
+
+        <ons-navigator var="myNav">
+            <ons-toolbar inline>
+                <div class="center">
+                   注意
+                </div>
+            </ons-toolbar>
+
+            <div style="text-align: center">
+                <p style="margin-top: 20px">
+                    确认退出登录
+                </p>
+
+                <p style="margin-top: 20px">
+                    <ons-button ng-click="exit()" style="margin-left: 10px;margin-right: 35px">确认</ons-button>
+                    <ons-button onclick="naviDialog.hide()" style="margin-left: 10px;margin-right: 10px">取消</ons-button>
+                </p>
+            </div>
+        </ons-navigator>
+    </ons-dialog>
+
+<!--<ons-page>-->
+    <!--<ons-toolbar>-->
+        <!--<div class="center" >我</div>-->
+    <!--</ons-toolbar>-->
+
+<!--</ons-page>-->

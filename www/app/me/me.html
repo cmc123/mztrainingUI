@@ -1,0 +1,35 @@
+<ons-page ng-controller="MeCtrl">
+    <ons-toolbar>
+        <div class="center" >我</div>
+    </ons-toolbar>
+
+    <div class="me-panel">
+        <img src="img/photo.png" class="me-photo">
+        <div class="me-name">{{emplyeeInfo.name}}</div>
+        <div class="me-position">{{emplyeeInfo.store.name}}&nbsp;{{emplyeeInfo.role[0].rolePlay}}</div>
+        <div class="me-desc">{{me.selfDesc}}</div>
+    </div>
+
+    <ons-list class="tr-box">
+        <ons-list-item modifier="chevron" ng-click="gotoDetailEmp(emplyeeInfo.id)">
+            我的信息
+        </ons-list-item>
+        <ons-list-item modifier="chevron" ng-click="gotoEmployeeCircle(emplyeeInfo.id)">
+            我的员工圈
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            我的收藏
+        </ons-list-item>
+        <ons-list-item modifier="chevron" ng-click="changePassword()">
+            更改密码
+        </ons-list-item>
+        <ons-list-item modifier="chevron" ng-click="show('app/me/exitLogin.html')">
+            退出登录
+        </ons-list-item>
+
+    </ons-list>
+
+</ons-page>
+
+
+

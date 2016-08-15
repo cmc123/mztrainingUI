@@ -1,0 +1,63 @@
+<ons-page ng-controller="EmptDetailCtrl">
+    <ons-toolbar class="toolbar">
+        <div class="left"><ons-back-button>返回</ons-back-button></div>
+        <div class="center">
+            {{employee.name}}
+        </div>
+    </ons-toolbar>
+
+    <ons-list class="tr-box">
+        <ons-list-item>
+            <ons-row>
+                <ons-col>{{employee.phoneNumber}}</ons-col>
+                <ons-col width="40px"><ons-icon icon="ion-ios-telephone-outline"></ons-icon></ons-col>
+                <ons-col width="40px"><ons-icon icon="ion-ios-chatbubble-outline"></ons-icon></ons-col>
+            </ons-row>
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            姓名
+            <span class="tr-list-item-right">
+                {{employee.name == '' ? '暂无目标' : employee.name}}
+            </span>
+        </ons-list-item>
+    </ons-list>
+    <ons-list-item modifier="chevron">
+        职业
+        <span class="tr-list-item-right">
+                {{employee.role[0].rolePlay}}
+            </span>
+    </ons-list-item>
+    <ons-list class="tr-box">
+        <ons-list-item>
+            工号
+            <span class="tr-list-item-right">
+                {{employee.jobNumber}}
+            </span>
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            电话
+            <span class="tr-list-item-right">
+                {{employee.phoneNumber}}
+            </span>
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            密码
+            <span class="tr-list-item-right">
+                {{employee.password}}
+            </span>
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            所在门店
+            <span class="tr-list-item-right">
+                {{employee.store.name}}
+            </span>
+        </ons-list-item>
+        <ons-list-item modifier="chevron">
+            门店地址
+            <span class="tr-list-item-right">
+                {{employee.store.address}}
+            </span>
+        </ons-list-item>
+    </ons-list>
+
+</ons-page>

@@ -1,0 +1,161 @@
+<ons-page ng-controller="CircleCtrl">
+    <ons-pull-hook ng-action="loadMyCircle('pulldown')" var="loader">
+    <span ng-switch="loader.getCurrentState()">
+          <span ng-switch-when="initial"><ons-icon size="35px" icon="ion-arrow-down-a"></ons-icon> Pull down to refresh</span>
+    <span ng-switch-when="preaction"><ons-icon size="35px" icon="ion-arrow-up-a"></ons-icon> Release to refresh</span>
+    <span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="ion-load-d"></ons-icon> Loading data...</span>
+    </span>
+    </ons-pull-hook>
+    <ons-toolbar>
+        <div class="left"><ons-back-button>返回</ons-back-button></div>
+        <div class="center"  >员工圈</div>
+        <div class="right" >
+            <ons-toolbar-button ng-click="gotocreteCircle(employee.id)">
+                <ons-icon icon="ion-navicon" fixed-width="false" style="font-size: 26px; vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <div style="margin:0 auto;display:none;">
+        <img class="data-avt" src="img/a1.jpg">
+    </div>
+    <header>
+        <img id="bg" src="img/bg.jpg">
+        <p id="user-name" class="data-name">{{employee.name}}</p>
+        <img id="avt" class="data-avt" src="img/0.jpg">
+    </header>
+    <div id="main">
+        <div id="list">
+            <ul>
+                <li ng-show="empList.length === 0">
+                    <div class="info">
+                        Pull down to fetch items
+                    </div>
+               </li>
+                <!-- -->
+                <li ng-repeat="e in empList">
+                    <div class="po-avt-wrap">
+                        <img class="po-avt data-avt" src="img/0.jpg">
+                    </div>
+                    <div class="po-cmt">
+                        <div class="po-hd">
+                            <p class="po-name"><span class="data-name">{{e.employee.name}}</span></p>
+                            <div class="post">
+                                <p>{{e.message}}</p>
+                                <p>
+                                    <img class="list-img" src="img/jt1.jpg" style="height: 80px;">
+                                    <img class="list-img" src="img/yt3.jpg" style="height: 80px;">
+                                    <img class="list-img data-avt" src="img/0.jpg" style="height: 80px;">
+                                </p>
+                            </div>
+                            <input type="text" ng-model="e.myComment" placeholder={{placeHolder==""?"写入你的评论":placeHolder}}   ng-show="e.waitingToWrite" ng-blur="recover(e.id)" style="width: 150px"/>
+                            <button ng-click="addComment(e.id,e.myComment)" ng-show="e.waitingToWrite" class="button--outline" style="right: 25px">发送</button>
+
+                            <p class="time">{{e.createdTime}}</p>
+                            <button ng-click="toWrite(e.id)" ng-show="e.showClickButton" class="button--outline" style="right: 80px">评论</button>
+                            <button ng-click="addLike(e.id)" ng-show="e.showClickButton" class="button--outline" style="right: 25px">点赞</button>
+                            <img class="c-icon" src="img/c.png" ng-click="showClick(e.id)">
+                        </div>
+                        <div class="r" ng-show="e.comment[0]"></div>
+                        <div class="cmt-wrap">
+                            <div ng-show="e.clickLikes[0]" class="like">
+                                <img src="img/l.png">
+                                <label ng-repeat="l in e.clickLikesTemp">{{l.employee.name}},</label><label>{{e.clicklikesLast}}</label>
+                            </div>
+                                <div class="cmt-list" ng-show="e.comment[0]" >
+                                <div ng-repeat="c in e.comment" >
+                                <p  ng-hide="c.replyEmployee" ng-click="toReply(e.id,c.id)">
+                                    <span>{{c.employee.name}}:</span>{{c.message}}
+                                    <!--{{c.replyEmployee}}-->
+
+                                </p>
+                                    <p ng-show="c.replyEmployee" ng-click="toReply(e.id,c.id)">
+                                        <span class="data-name">{{c.employee.name}}</span>
+                                        回复
+                                        <span>
+                                            {{c.replyEmployee.name}}
+                                        </span>
+                                        <span>
+                                            ：
+                                        </span>
+                                        {{c.message}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                <div ng-show="hasMore" style="text-align:center;background-color: #fff; margin-top: 10px; padding: 5px;" ng-click="loadMore()">
+                    加载更多
+                </div>
+                <div ng-hide="hasMore" style="text-align:center;background-color: #fff; margin-top: 10px; padding: 5px;">
+                    没有更多数据了...
+                </div>
+                </ul>
+            </div>
+                <!-- -->
+
+
+
+    <script>
+        function gotoplay(scene) {
+            var gourl = "/act/pengYouQuan/my.php?sv=" + scene;
+            location.href = gourl;
+        }
+        function safetostring(str) {
+            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+        }
+
+        //$("#list").html($("#scene").html());
+
+        setTimeout(function () {
+            // $(".data-name").text(safetostring(nickname));
+            //$(".data-avt").attr("src", headimgurl);
+            var cw = $('.list-img').width();
+            $('.list-img').css({'height': cw + 'px'});
+        }, 0);
+
+        $(window).resize(function () {
+            var cw = $('.list-img').width();
+            $('.list-img').css({'height': cw + 'px'});
+        });
+
+
+        $(document.body).show();
+
+
+        function hideActionSheet(weuiActionsheet, mask) {
+            weuiActionsheet.removeClass('weui_actionsheet_toggle');
+            mask.removeClass('weui_fade_toggle');
+            weuiActionsheet.on('transitionend', function () {
+                mask.hide();
+            }).on('webkitTransitionEnd', function () {
+                mask.hide();
+            })
+        }
+        function showActionSheet() {
+            var mask = $('#mask');
+            var weuiActionsheet = $('#weui_actionsheet');
+            weuiActionsheet.addClass('weui_actionsheet_toggle');
+            mask.show().addClass('weui_fade_toggle').click(function () {
+                hideActionSheet(weuiActionsheet, mask);
+            });
+            $('#actionsheet_cancel').click(function () {
+                hideActionSheet(weuiActionsheet, mask);
+            });
+            weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
+        }
+        $('#list').not(".noplayimg").on('click', function () {
+            showActionSheet();
+        });
+        $('img').not(".noplayimg").on('click', function (e) {
+            showActionSheet();
+        });
+        $('.play_pyq').on('click', function () {
+            var scene = $(this).data("scene");
+            gotoplay(scene);
+        });
+    </script>
+
+</ons-page>
+

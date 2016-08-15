@@ -1,0 +1,70 @@
+<ons-page ng-controller="createCtrl">
+    <ons-toolbar class="toolbar">
+        <div class="left"><ons-back-button>返回</ons-back-button></div>
+        <div class="center">
+            新的客户
+        </div>
+    </ons-toolbar>
+    <ons-list>
+        <ons-list-item>
+            <input type="text" placeholder="customerName" ng-model="newCustomer.customerName" class="text-input text-input--transparent" style="margin-top:8px; width: 100%;">
+        </ons-list-item>
+
+        <ons-list-item>
+            <input type="text" placeholder="phoneNumber" ng-model="newCustomer.phoneNumber" class="text-input text-input--transparent" style="margin-top:8px; width: 100%;">
+        </ons-list-item>
+
+        <ons-list-item>
+            <ons-row>
+                <ons-col width="90px">
+                    <span style="color: #666">性别</span></ons-col>
+                <ons-col>
+
+                    <div style="float: right; padding-right: 16px;">
+                        <label class="radio-button">
+                            <input type="radio" value="男" ng-model="newCustomer.sex">
+                            <div class="radio-button__checkmark"></div>
+                            男
+                        </label>
+
+                        <label class="radio-button">
+                            <input type="radio" value="女" ng-model="newCustomer.sex">
+                            <div class="radio-button__checkmark"></div>
+                            女
+                        </label>
+                    </div>
+
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+
+
+        <ons-list-item>
+            <ons-row>
+                <ons-col width="90px">
+                    <span style="color: #666">生日</span></ons-col>
+                <ons-col> <select style="height: 26px; margin-right:10px" ng-model="newCustomer.birthYear" class="form-control" ng-options="act for act in birthYears" ></select>
+                </ons-col>年
+                <ons-col>
+                    <select  style="height: 26px; margin-right:10px" ng-model="newCustomer.birthMonth" class="form-control" ng-options="act for act in birthMonths" ></select>
+
+                </ons-col>月
+                <ons-col>
+                    <select  style="height: 26px; margin-right:10px;" ng-model="newCustomer.birthDay" class="form-control" ng-options="act for act in birthDays" ></select>
+
+                </ons-col>日
+
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+
+
+    <div class="content-padded">
+        <ons-button modifier="large" ng-click="createMyCustomer()">
+            Save
+        </ons-button>
+    </div>
+    {{errorMsg}}
+
+
+</ons-page>

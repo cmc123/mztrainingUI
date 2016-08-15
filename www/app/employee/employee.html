@@ -1,0 +1,56 @@
+<ons-page ng-controller="empListCtrl">
+    <ons-toolbar class="toolbar">
+        <div class="left" ng-hide="search"><ons-back-button>返回</ons-back-button></div>
+        <div class="center" ng-hide="search">
+            员工
+        </div>
+        <div class="right" ng-hide="search">
+            <ons-toolbar-button id="button" ng-click="searchC()">
+                <ons-icon icon="ion-ios-search-strong" fixed-width="false" style="font-size: 26px; vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <input type="search" class="search-input" ng-model="searchValue" ng-change="searchM()" ng-blur="searchS()"  ng-show="search" style="width: 96%; margin: 6px auto 6px auto;" placeholder="Search">
+
+    </ons-toolbar>
+
+    <ons-row>
+        <ons-col> <select style="height: 26px; margin-right:10px" ng-model="engineer.currentActivityA" class="form-control" ng-options="act for act in activitiesA" ></select>
+        </ons-col>
+        <ons-col>
+            <select  style="height: 26px; margin-right:10px" ng-model="engineer.currentActivityB" class="form-control" ng-options="act for act in activitiesB" ></select>
+
+        </ons-col>
+        <ons-col>
+            <select  style="height: 26px; margin-right:10px;" ng-model="engineer.currentActivityC" class="form-control" ng-options="act for act in activitiesC" ></select>
+
+        </ons-col>
+        <ons-col>
+            <ons-button style="height: 26px; font-size: 13px" modifier="cta" ng-click="loadEmployeeByPage()">查询</ons-button>
+        </ons-col>
+    </ons-row>
+
+    <ons-list class="tr-box" ng-hide="loading" style="border-top:none" >
+        <ons-list-item modifier="chevron"
+                       ng-repeat="e in employeeList" ng-click="gotoDetail(e.id)" style="line-height:1">
+            <ons-row>
+                <img src="img/profile-image-02.png" style="width:30px;height:30px;margin-top:8px; border-radius:2px;margin-right:10px">
+                <ons-col style="line-height:44px">
+                    {{e.name}}
+                </ons-col>
+                <ons-col>
+                    {{e.phoneNumber | trPhoneHide}}<br/>
+                    {{e.role.rolePlay}}</ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+
+    <div ng-show="hasMore" style="text-align:center;background-color: #fff; margin-top: 10px; padding: 5px;" ng-click="loadMore()">
+        下一页
+    </div>
+    <div ng-hide="hasMore" style="text-align:center;background-color: #fff; margin-top: 10px; padding: 5px;">
+        没有更多数据了...
+    </div>
+
+    <tr-loading loading-indicator="loading"></tr-loading>
+
+</ons-page>

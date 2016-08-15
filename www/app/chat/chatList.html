@@ -1,0 +1,26 @@
+<ons-page ng-controller="chatListCtrl" >
+
+    <ons-toolbar>
+        <div class="center" ng-hide="search">聊天</div>
+        <div class="right" ng-hide="search">
+            <ons-toolbar-button id="button" ng-click="searchC()">
+                <ons-icon icon="ion-ios-search-strong" fixed-width="false" style="font-size: 26px; vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <input type="search" class="search-input" ng-model="searchValue" ng-change="searchM()" ng-blur="searchS()"  ng-show="search" style="width: 96%; margin: 6px auto 6px auto;" placeholder="Search">
+
+    </ons-toolbar>
+
+    <ons-list class="tr-box" ng-hide="loading" style="border-top:none" >
+        <ons-list-item modifier="chevron"
+                       ng-repeat="c in [1,2,3,4,5]" ng-click="gotoChat('GZ22530','陈梦川')" style="line-height:1">
+            <ons-row>
+                <img src="img/profile-image-02.png" style="width:30px;height:30px;margin-top:8px; border-radius:2px;margin-right:10px">
+                <ons-col style="line-height:44px">
+                    陈梦川
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+
+</ons-page>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+    <title>美众培训</title>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="components/loader.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/onsenui/js/onsenui.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.js"></script>
+
+
+    <script src="js/global.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/directive.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="app/customer/customer.js"></script>
+    <script src="app/me/me.js"></script>
+    <script src="app/login/login.js"></script>
+    <script src="app/newCustomer/newCustomer.js"></script>
+    <script src="app/chat/chat.js"></script>
+    <script src="app/Circle/circle.js"></script>
+    <script src="app/employee/employee.js"></script>
+    <script type="text/javascript" src="js/list_xlk_js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/list_xlk_js/script.js"></script>
+</head>
+<body>
+
+    <ons-navigator var="appNavigator" >
+        <ons-page>
+            <ons-tabbar>
+                <ons-tab page="app/chat/chatList.html" label="通讯" icon="ion-ios-people"></ons-tab>
+              <ons-tab page="app/customer/list.html" label="客人" icon="ion-ios-people" active="true"></ons-tab>
+              <ons-tab page="app/me/me.html" label="我" icon="ion-ios-person"></ons-tab>
+            </ons-tabbar>
+        </ons-page>
+    </ons-navigator>
+
+</body>
+</html>
+
+
+

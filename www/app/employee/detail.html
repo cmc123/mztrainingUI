@@ -1,0 +1,55 @@
+<ons-page ng-controller="StoreEmpDetailCtrl">
+    <ons-toolbar class="toolbar">
+        <div class="left"><ons-back-button>返回</ons-back-button></div>
+        <div class="center">
+            {{employee.name}}
+        </div>
+    </ons-toolbar>
+
+    <ons-list class="tr-box">
+        <ons-list-item>
+            <ons-row>
+                <ons-col>{{employee.phoneNumber}}</ons-col>
+                <ons-col width="40px"><ons-icon icon="ion-ios-telephone-outline"></ons-icon></ons-col>
+                <ons-col width="40px"><ons-icon icon="ion-ios-chatbubble-outline"></ons-icon></ons-col>
+            </ons-row>
+        </ons-list-item>
+        <!--<ons-list-item modifier="chevron">-->
+            <!--销售目标-->
+            <!--<span class="tr-list-item-right">-->
+                <!--{{customer.salesTarget == '' ? '暂无目标' : customer.salesTarget}}-->
+            <!--</span>-->
+        <!--</ons-list-item>-->
+    </ons-list>
+
+    <ons-list class="tr-box">
+        <!--<ons-list-item>-->
+            <!--会员级别-->
+            <!--<span class="tr-list-item-right">-->
+                <!--{{customer.level}}-->
+            <!--</span>-->
+        <!--</ons-list-item>-->
+        <ons-list-item modifier="chevron">
+            性别
+            <span class="tr-list-item-right">
+                {{employee.sex}}
+            </span>
+        </ons-list-item>
+        <!--<ons-list-item modifier="chevron">-->
+            <!--生日-->
+            <!--<span class="tr-list-item-right">-->
+                <!--{{customer.birthMonth}}月{{customer.birthDay}}日-->
+            <!--</span>-->
+        <!--</ons-list-item>-->
+        <ons-list-item modifier="chevron">
+            工号
+            <span class="tr-list-item-right">
+                {{employee.jobNumber}}
+            </span>
+        </ons-list-item>
+        <div class="content-padded">
+            <ons-button modifier="large" ng-click="createChat(employee.id,employee.name)">发起聊天</ons-button>
+        </div>
+    </ons-list>
+
+</ons-page>

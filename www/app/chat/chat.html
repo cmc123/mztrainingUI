@@ -1,0 +1,35 @@
+<ons-page ng-controller="chatCtrl">
+
+    <ons-toolbar>
+        <div class="left"><ons-back-button>返回</ons-back-button></div>
+        <div class="center"  >通讯</div>
+        <div class="right" >
+            <ons-toolbar-button>
+                <ons-icon icon="ion-navicon" fixed-width="false" style="font-size: 26px; vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+
+    </ons-toolbar>
+    <div id="container">
+        <div class="header">
+            <span style="float: left;">{{name}}</span>
+            <span style="float: right;">{{currenttime}}</span>
+        </div>
+        <ul class="content">
+            <li ng-repeat="m in messageList">
+                <img src="img/bg.jpg" style="width: 50px;height: 50px" width="50px" height="50px" class="imgright">
+                <span class="spanright">{{m}}</span>
+            </li>
+        </ul>
+        <div class="footer">
+            <div id="user_face_icon">
+                <img src="img/bg.jpg" alt="">
+            </div>
+            <input id="text" type="text" placeholder="请输入聊天内容.." ng-model="currentMessage">
+            <span id="btn" ng-click="sendMessage()">发送</span>
+            <button ng-click="askForMessage()">更新</button>
+        </div>
+    </div>
+
+</ons-page>
+
